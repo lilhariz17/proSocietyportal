@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Employers - Retirement Plan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+  /* ================================
+     Global Theme (maroon-based)
+     ================================ */
+  :root {
+    --primary: #2c3e50;                       /* Dark gray/blue for main text */
+    --secondary: #800000;                     /* Maroon as the main brand color */
+    --accent: #a93226;                        /* Darker maroon/red accent */
+    --light: #ecf0f1;                         /* Light gray backgrounds */
+    --dark: #2c3e50;                          /* Dark elements */
+    --success: #27ae60;                       /* Keep green for success states */
+    --text: #333;                             /* Standard text */
+    --text-light: #777;                       /* Lighter text */
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);   /* Global shadow */
+    --transition: all 0.3s ease;              /* Smooth animation */
+    --gradient: linear-gradient(135deg, #800000 0%, #a93226 100%); /* Maroon gradient */
+  }
+
+  /* Reset and base typography */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  body {
+    color: var(--text);
+    line-height: 1.6;
+    background-color: #f9f9f9;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ================================
+     Header & Navigation
+     ================================ */
+  header {
+    background-color: white;
+    box-shadow: var(--shadow);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .logo i {
+    margin-right: 10px;
+    color: var(--accent); /* Maroon accent */
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+  }
+
+  .nav-links li {
+    margin-left: 30px;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    transition: var(--transition);
+  }
+
+  .nav-links a:hover {
+    color: var(--secondary); /* Maroon hover */
+  }
+
+  .nav-links a.active {
+    color: var(--secondary); /* Maroon active */
+    font-weight: 600;
+  }
+
+  /* ================================
+     Buttons
+     ================================ */
+  .btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none; /* Removed underline */
+    font-weight: 600;
+    transition: var(--transition);
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--gradient); /* Maroon gradient */
+    color: white;
+    border: none;
+    box-shadow: 0 4px 10px rgba(128, 0, 0, 0.3); /* Maroon shadow */
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(128, 0, 0, 0.4);
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    color: var(--secondary);
+    border: 2px solid var(--secondary);
+  }
+
+  .btn-outline:hover {
+    background-color: var(--secondary);
+    color: white;
+  }
+
+  .btn-accent {
+    background: var(--gradient);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 10px rgba(128, 0, 0, 0.3);
+  }
+
+  .btn-accent:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(128, 0, 0, 0.4);
+  }
+
+  /* ================================
+     Page Header Section
+     ================================ */
+  .page-header {
+    padding: 150px 0 80px;
+    background: var(--gradient); /* Maroon gradient */
+    color: white;
+    text-align: center;
+  }
+
+  .page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+
+  .page-header p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.9;
+  }
+
+  /* ================================
+     Sections Styling
+     ================================ */
+  .content-section {
+    padding: 80px 0;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .section-title h2 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: var(--gradient); /* Maroon underline */
+    border-radius: 3px;
+  }
+
+  .section-title p {
+    color: var(--text-light);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* ================================
+     Benefits Section
+     ================================ */
+  .benefits {
+    background-color: white;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  .benefit-card {
+    background-color: var(--light);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+  }
+
+  .benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .benefit-icon {
+    font-size: 2.5rem;
+    background: var(--gradient); /* Maroon icon gradient */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+  }
+
+  .benefit-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+  }
+
+  /* ================================
+     Talent Section
+     ================================ */
+  .talent {
+    background-color: #f5f7fa;
+  }
+
+  .talent-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  .talent-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+  }
+
+  .talent-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .talent-img {
+    height: 200px;
+    background: var(--gradient); /* Maroon background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 3rem;
+  }
+
+  .talent-content {
+    padding: 25px;
+  }
+
+  .talent-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+  }
+
+  /* ================================
+     Steps Section
+     ================================ */
+  .get-started {
+    background-color: white;
+  }
+
+  .steps {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 50px;
+  }
+
+  .step {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+    padding: 30px;
+    position: relative;
+  }
+
+  .step-number {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient); /* Maroon step circle */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 auto 20px;
+    box-shadow: 0 4px 10px rgba(128, 0, 0, 0.3);
+  }
+
+  .step h3 {
+    margin-bottom: 15px;
+    color: var(--primary);
+    font-size: 1.5rem;
+  }
+
+  .step p {
+    color: var(--text-light);
+  }
+
+  /* ================================
+     CTA Section
+     ================================ */
+  .cta {
+    padding: 100px 0;
+    background: var(--gradient); /* Maroon background */
+    color: white;
+    text-align: center;
+  }
+
+  .cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  .cta p {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    opacity: 0.9;
+  }
+
+  /* ================================
+     Footer
+     ================================ */
+  footer {
+    background-color: var(--primary);
+    color: white;
+    padding: 60px 0 30px;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  .footer-column h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  .footer-column h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--gradient); /* Maroon underline */
+  }
+
+  .footer-column ul {
+    list-style: none;
+  }
+
+  .footer-column ul li {
+    margin-bottom: 10px;
+  }
+
+  .footer-column a {
+    color: #ddd;
+    text-decoration: none;
+    transition: var(--transition);
+  }
+
+  .footer-column a:hover {
+    color: var(--secondary); /* Maroon hover */
+    padding-left: 5px;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: var(--transition);
+  }
+
+  .social-links a:hover {
+    background: var(--gradient);
+    transform: translateY(-3px);
+  }
+
+  .copyright {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ddd;
+    font-size: 0.9rem;
+  }
+
+  /* ================================
+     Responsive Design
+     ================================ */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+
+    .page-header h1 {
+      font-size: 2.2rem;
+    }
+
+    .page-header p {
+      font-size: 1rem;
+    }
+
+    .steps {
+      flex-direction: column;
+    }
+
+    .step {
+      margin-bottom: 40px;
+    }
+  }
+</style>
+
+</head>
+<body>
+  <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-retirement"></i>
+                    <span>Retirement Plan</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="howWorks.html">How It Works</a></li>
+                    <li><a href="forRetirees.html">For Retirees</a></li>
+                    <li><a href="forEmployers.html" class="active">For Employers</a></li>
+                       <li><a href="signUp.php" class="btn btn-outline">Sign Up</a></li>
+                    <li><a href="login.php" class="btn btn-outline">Log In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>For Employers</h1>
+            <p>Access experienced professionals who bring decades of expertise, reliability, and dedication to your organization.</p>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="content-section benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Hire Retired Professionals?</h2>
+                <p>Retirees bring unique advantages that can significantly benefit your organization.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Decades of Experience</h3>
+                    <p>Access professionals with 20+ years of industry knowledge and proven track records.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>Proven Reliability</h3>
+                    <p>Work with professionals who have demonstrated commitment and work ethic throughout their careers.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>Cost-Effective</h3>
+                    <p>Often more affordable than full-time employees while delivering exceptional value.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Mentorship Ability</h3>
+                    <p>Retirees naturally mentor younger staff, strengthening your team's overall capabilities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Talent Section -->
+    <section class="content-section talent">
+        <div class="container">
+            <div class="section-title">
+                <h2>Find the Right Talent</h2>
+                <p>Our platform connects you with professionals across all industries and skill sets.</p>
+            </div>
+            <div class="talent-cards">
+                <div class="talent-card">
+                    <div class="talent-img">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="talent-content">
+                        <h3>Technology & IT</h3>
+                        <p>Software developers, systems analysts, IT managers, and other tech professionals with decades of experience.</p>
+                    </div>
+                </div>
+                <div class="talent-card">
+                    <div class="talent-img">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="talent-content">
+                        <h3>Business & Finance</h3>
+                        <p>Accountants, financial analysts, HR professionals, and business strategists with proven track records.</p>
+                    </div>
+                </div>
+                <div class="talent-card">
+                    <div class="talent-img">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <div class="talent-content">
+                        <h3>Engineering & Technical</h3>
+                        <p>Engineers, project managers, technical specialists, and skilled tradespeople with extensive experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Get Started -->
+    <section class="content-section get-started">
+        <div class="container">
+            <div class="section-title">
+                <h2>How to Get Started</h2>
+                <p>Begin finding the perfect retired professionals for your organization in just a few steps.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Create Employer Profile</h3>
+                    <p>Sign up as an employer and create your company profile detailing your needs and culture.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Post Opportunities</h3>
+                    <p>Create detailed listings for the positions, projects, or consulting roles you need to fill.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Connect & Hire</h3>
+                    <p>Review applications, interview candidates, and make hires through our secure platform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Find Exceptional Talent?</h2>
+            <p>Join thousands of employers who are already benefiting from our platform.</p>
+            <div class="hero-buttons">
+                <a href="signUp.php" class="btn btn-primary">Post a Job</a>
+                <a href="howWorks.html" class="btn btn-accent">Learn How It Works</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Retirement Plan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    :root {
+        --primary: #2c3e50;
+        --secondary: #800000;   /* changed from #667eea */
+        --accent: #a83232;      /* changed from #764ba2 */
+        --light: #ecf0f1;
+        --dark: #2c3e50;
+        --success: #27ae60;
+        --text: #333;
+        --text-light: #777;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+        --gradient: linear-gradient(135deg, #800000 0%, #a83232 100%); /* updated gradient */
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        color: var(--text);
+        line-height: 1.6;
+        background-color: #f9f9f9;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* Header & Navigation */
+    header {
+        background-color: white;
+        box-shadow: var(--shadow);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary);
+    }
+
+    .logo i {
+        margin-right: 10px;
+        color: var(--accent);
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+    }
+
+    .nav-links li {
+        margin-left: 30px;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 500;
+        transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+        color: var(--secondary);
+    }
+
+    .nav-links a.active {
+        color: var(--secondary);
+        font-weight: 600;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 12px 25px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: var(--transition);
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background: var(--gradient);
+        color: white;
+        border: none;
+        box-shadow: 0 4px 10px rgba(128, 0, 0, 0.3); /* updated shadow */
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(128, 0, 0, 0.4); /* updated shadow */
+    }
+
+    .btn-outline {
+        background-color: transparent;
+        color: var(--secondary);
+        border: 2px solid var(--secondary);
+    }
+
+    .btn-outline:hover {
+        background-color: var(--secondary);
+        color: white;
+    }
+
+    .btn-accent {
+        background: var(--gradient);
+        color: white;
+        border: none;
+        box-shadow: 0 4px 10px rgba(128, 0, 0, 0.3); /* updated shadow */
+    }
+
+    .btn-accent:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(128, 0, 0, 0.4); /* updated shadow */
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 150px 0 100px;
+        background: var(--gradient);
+        color: white;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        line-height: 1.2;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 40px;
+        opacity: 0.9;
+    }
+
+    .hero-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    /* Features Section */
+    .features {
+        padding: 80px 0;
+        background-color: white;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 15px;
+        position: relative;
+        display: inline-block;
+    }
+
+    .section-title h2::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: var(--gradient);
+        border-radius: 3px;
+    }
+
+    .section-title p {
+        color: var(--text-light);
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .feature-card {
+        background-color: var(--light);
+        border-radius: 10px;
+        padding: 30px;
+        text-align: center;
+        transition: var(--transition);
+        box-shadow: var(--shadow);
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-icon {
+        font-size: 2.5rem;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: var(--primary);
+    }
+
+    /* How It Works */
+    .how-it-works {
+        padding: 80px 0;
+        background-color: #f5f7fa;
+    }
+
+    .steps {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 50px;
+    }
+
+    .step {
+        flex: 1;
+        min-width: 250px;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+    }
+
+    .step-number {
+        width: 50px;
+        height: 50px;
+        background: var(--gradient);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0 auto 20px;
+        box-shadow: 0 4px 10px rgba(128, 0, 0, 0.3);
+    }
+
+    .step h3 {
+        margin-bottom: 15px;
+        color: var(--primary);
+    }
+
+    /* Testimonials */
+    .testimonials {
+        padding: 80px 0;
+        background-color: white;
+    }
+
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+    }
+
+    .testimonial-card {
+        background-color: var(--light);
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: var(--shadow);
+    }
+
+    .testimonial-text {
+        font-style: italic;
+        margin-bottom: 20px;
+        color: var(--text);
+    }
+
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+    }
+
+    .author-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--gradient);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        margin-right: 15px;
+    }
+
+    /* CTA Section */
+    .cta {
+        padding: 100px 0;
+        background: var(--gradient);
+        color: white;
+        text-align: center;
+    }
+
+    .cta h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .cta p {
+        max-width: 700px;
+        margin: 0 auto 40px;
+        opacity: 0.9;
+    }
+
+    /* Footer */
+    footer {
+        background-color: var(--primary);
+        color: white;
+        padding: 60px 0 30px;
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .footer-column h3 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 40px;
+        height: 2px;
+        background: var(--gradient);
+    }
+
+    .footer-column ul {
+        list-style: none;
+    }
+
+    .footer-column ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-column a {
+        color: #ddd;
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+    .footer-column a:hover {
+        color: var(--secondary);
+        padding-left: 5px;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        transition: var(--transition);
+    }
+
+    .social-links a:hover {
+        background: var(--gradient);
+        transform: translateY(-3px);
+    }
+
+    .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ddd;
+        font-size: 0.9rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+        }
+
+        .hero-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .steps {
+            flex-direction: column;
+        }
+
+        .step {
+            margin-bottom: 40px;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-retirement"></i>
+                    <span>Pro Society Portal</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="home.html" class="active">Home</a></li>
+                    <li><a href="howWorks.html">How It Works</a></li>
+                    <li><a href="forRetirees.html">For Retirees</a></li>
+                    <li><a href="forEmployers.html">For Employers</a></li>
+                    <li><a href="signUp.php" class="btn btn-outline">Sign Up</a></li>
+                    <li><a href="login.php" class="btn btn-outline">Log In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Your Experience Is Valuable. Find Purpose in Your Retirement.</h1>
+            <p>Pro Society Portal connects skilled retirees with meaningful part-time work, freelance opportunities, mentorships, and volunteer positions.</p>
+            <div class="hero-buttons">
+                <a href="forRetirees.html" class="btn btn-primary">I'm a Retiree</a>
+                <a href="forEmployers.html" class="btn btn-accent">I'm an Employer</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Pro Society Portal?</h2>
+                <p>We're specifically designed to meet the unique needs of retirees and organizations seeking their valuable expertise.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>Skill Verification</h3>
+                    <p>Showcase your verified skills with digital badges to stand out to employers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Smart Job Matching</h3>
+                    <p>Find opportunities that match your skills, interests, and preferred schedule.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Direct Messaging</h3>
+                    <p>Communicate easily with employers through our secure messaging platform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How Pro Society Portal Works</h2>
+                <p>Getting started with our platform is simple and straightforward for both retirees and employers.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Create Your Profile</h3>
+                    <p>Sign up as a retiree or employer and build your detailed profile.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Connect & Match</h3>
+                    <p>Our algorithm matches retiree skills with employer needs.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Start Engaging</h3>
+                    <p>Begin conversations, schedule interviews, and start working together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Find Your Next Opportunity?</h2>
+            <p>Join thousands of retirees and employers who are already benefiting from our platform.</p>
+            <div class="hero-buttons">
+                <a href="forRetirees.html" class="btn btn-primary">Create Retiree Profile</a>
+                <a href="forEmployers.html" class="btn btn-accent">Post a Job</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

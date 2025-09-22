@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Retirees - Pro Society Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    :root {
+        /* Updated color palette */
+        --primary: #2c3e50;       /* Main dark text color */
+        --secondary: #800000;     /* Replaced purple with maroon */
+        --accent: #a93226;        /* Darker maroon/red accent */
+        --light: #ecf0f1;         /* Light background */
+        --dark: #2c3e50;          /* Dark header/footer */
+        --success: #27ae60;       /* Keep green for success */
+        --text: #333;             /* Standard text */
+        --text-light: #777;       /* Light gray text */
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow */
+        --transition: all 0.3s ease;            /* Smooth animation */
+        --gradient: linear-gradient(135deg, #800000 0%, #a93226 100%); /* Maroon gradient */
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        color: var(--text);
+        line-height: 1.6;
+        background-color: #f9f9f9;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* Header & Navigation */
+    header {
+        background-color: white;
+        box-shadow: var(--shadow);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary);
+    }
+
+    .logo i {
+        margin-right: 10px;
+        color: var(--accent); /* Updated to maroon accent */
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+    }
+
+    .nav-links li {
+        margin-left: 30px;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 500;
+        transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+        color: var(--secondary); /* Hover maroon */
+    }
+
+    .nav-links a.active {
+        color: var(--secondary); /* Active maroon */
+        font-weight: 600;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 12px 25px;
+        border-radius: 50px;
+        text-decoration: none; /* Removed underline */
+        font-weight: 600;
+        transition: var(--transition);
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background: var(--gradient);
+        color: white;
+        border: none;
+        box-shadow: 0 4px 10px rgba(128, 0, 0, 0.3); /* Maroon shadow */
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(128, 0, 0, 0.4);
+    }
+
+    .btn-outline {
+        background-color: transparent;
+        color: var(--secondary);
+        border: 2px solid var(--secondary);
+    }
+
+    .btn-outline:hover {
+        background-color: var(--secondary);
+        color: white;
+    }
+
+    .btn-accent {
+        background: var(--gradient);
+        color: white;
+        border: none;
+        box-shadow: 0 4px 10px rgba(128, 0, 0, 0.3);
+    }
+
+    .btn-accent:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(128, 0, 0, 0.4);
+    }
+
+    /* Page Header */
+    .page-header {
+        padding: 150px 0 80px;
+        background: var(--gradient);
+        color: white;
+        text-align: center;
+    }
+
+    .page-header h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+
+    .page-header p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto;
+        opacity: 0.9;
+    }
+
+    /* Content Section */
+    .content-section {
+        padding: 80px 0;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 15px;
+        position: relative;
+        display: inline-block;
+    }
+
+    .section-title h2::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: var(--gradient); /* Maroon underline effect */
+        border-radius: 3px;
+    }
+
+    .section-title p {
+        color: var(--text-light);
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    /* Benefits Section */
+    .benefits {
+        background-color: white;
+    }
+
+    .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .benefit-card {
+        background-color: var(--light);
+        border-radius: 10px;
+        padding: 30px;
+        text-align: center;
+        transition: var(--transition);
+        box-shadow: var(--shadow);
+    }
+
+    .benefit-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .benefit-icon {
+        font-size: 2.5rem;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 20px;
+    }
+
+    .benefit-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: var(--primary);
+    }
+
+    /* Opportunities Section */
+    .opportunities {
+        background-color: #f5f7fa;
+    }
+
+    .opportunity-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .opportunity-card {
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: var(--transition);
+        box-shadow: var(--shadow);
+    }
+
+    .opportunity-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .opportunity-img {
+        height: 200px;
+        background: var(--gradient);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3rem;
+    }
+
+    .opportunity-content {
+        padding: 25px;
+    }
+
+    .opportunity-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: var(--primary);
+    }
+
+    /* How to Get Started */
+    .get-started {
+        background-color: white;
+    }
+
+    .steps {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 50px;
+    }
+
+    .step {
+        flex: 1;
+        min-width: 250px;
+        text-align: center;
+        padding: 30px;
+        position: relative;
+    }
+
+    .step-number {
+        width: 60px;
+        height: 60px;
+        background: var(--gradient);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0 auto 20px;
+        box-shadow: 0 4px 10px rgba(128, 0, 0, 0.3);
+    }
+
+    .step h3 {
+        margin-bottom: 15px;
+        color: var(--primary);
+        font-size: 1.5rem;
+    }
+
+    .step p {
+        color: var(--text-light);
+    }
+
+    /* Testimonials */
+    .testimonials {
+        background-color: #f5f7fa;
+    }
+
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+    }
+
+    .testimonial-card {
+        background-color: white;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: var(--shadow);
+    }
+
+    .testimonial-text {
+        font-style: italic;
+        margin-bottom: 20px;
+        color: var(--text);
+    }
+
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+    }
+
+    .author-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--gradient);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        margin-right: 15px;
+    }
+
+    /* CTA Section */
+    .cta {
+        padding: 100px 0;
+        background: var(--gradient);
+        color: white;
+        text-align: center;
+    }
+
+    .cta h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .cta p {
+        max-width: 700px;
+        margin: 0 auto 40px;
+        opacity: 0.9;
+    }
+
+    /* Footer */
+    footer {
+        background-color: var(--primary);
+        color: white;
+        padding: 60px 0 30px;
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .footer-column h3 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 40px;
+        height: 2px;
+        background: var(--gradient);
+    }
+
+    .footer-column ul {
+        list-style: none;
+    }
+
+    .footer-column ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-column a {
+        color: #ddd;
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+    .footer-column a:hover {
+        color: var(--secondary);
+        padding-left: 5px;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        transition: var(--transition);
+    }
+
+    .social-links a:hover {
+        background: var(--gradient);
+        transform: translateY(-3px);
+    }
+
+    .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ddd;
+        font-size: 0.9rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+
+        .page-header h1 {
+            font-size: 2.2rem;
+        }
+
+        .page-header p {
+            font-size: 1rem;
+        }
+
+        .steps {
+            flex-direction: column;
+        }
+
+        .step {
+            margin-bottom: 40px;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-retirement"></i>
+                    <span>Pro Society Portal</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="howWorks.html">How It Works</a></li>
+                    <li><a href="forRetirees.html" class="active">For Retirees</a></li>
+                    <li><a href="forEmployers.html">For Employers</a></li>
+                    <li><a href="signUp.php" class="btn btn-outline">Sign Up</a></li>
+                    <li><a href="login.php" class="btn btn-outline">Log In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>For Retirees</h1>
+            <p>Your experience is valuable. Find meaningful opportunities that match your skills, interests, and schedule.</p>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="content-section benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Continue Working in Retirement ?</h2>
+                <p>Staying engaged through work offers numerous benefits beyond financial compensation.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Stay Mentally Active</h3>
+                    <p>Keep your mind sharp and engaged by applying your skills and knowledge to new challenges.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Social Connection</h3>
+                    <p>Maintain social connections and build new relationships through collaborative work.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Supplemental Income</h3>
+                    <p>Earn additional income while enjoying the flexibility of retirement.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Sense of Purpose</h3>
+                    <p>Find meaning and fulfillment by contributing your expertise to worthwhile projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opportunities Section -->
+    <section class="content-section opportunities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Types of Opportunities</h2>
+                <p>Find the perfect match for your skills, interests, and availability.</p>
+            </div>
+            <div class="opportunity-cards">
+                <div class="opportunity-card">
+                    <div class="opportunity-img">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="opportunity-content">
+                        <h3>Part-Time Positions</h3>
+                        <p>Flexible part-time roles that respect your retirement schedule while utilizing your expertise.</p>
+                    </div>
+                </div>
+                <div class="opportunity-card">
+                    <div class="opportunity-img">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="opportunity-content">
+                        <h3>Project-Based Work</h3>
+                        <p>Short-term projects that allow you to contribute your specific skills without long-term commitment.</p>
+                    </div>
+                </div>
+                <div class="opportunity-card">
+                    <div class="opportunity-img">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="opportunity-content">
+                        <h3>Consulting & Mentoring</h3>
+                        <p>Share your knowledge and experience by guiding younger professionals or consulting on specialized topics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Get Started -->
+    <section class="content-section get-started">
+        <div class="container">
+            <div class="section-title">
+                <h2>How to Get Started</h2>
+                <p>Begin your journey to meaningful retirement work in just a few simple steps.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Create Your Profile</h3>
+                    <p>Sign up and build a comprehensive profile highlighting your skills, experience, and preferences.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Browse Opportunities</h3>
+                    <p>Explore available positions that match your criteria and interests.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Apply & Connect</h3>
+                    <p>Apply to opportunities and communicate directly with employers through our platform.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="signUp.php" class="btn btn-primary">Create Your Profile Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Find Meaningful Work?</h2>
+            <p>Join thousands of retirees who are already benefiting from our platform.</p>
+            <div class="hero-buttons">
+                <a href="signUp.php" class="btn btn-primary">Create Your Profile</a>
+                <a href="howWorks.html" class="btn btn-accent">Learn How It Works</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
