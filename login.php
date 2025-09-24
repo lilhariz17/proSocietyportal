@@ -390,7 +390,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             
             <div class="redirect-link">
-                Don't have an account? <a href="signup.php">Sign up here</a>
+                Don't have an account? <a href="signUp.php">Sign up here</a>
             </div>
         </div>
     </div>
@@ -413,4 +413,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         });
     </script>
 </body>
+
 </html>
